@@ -8,7 +8,10 @@ const BASE_URL = 'http://localhost:3000';
 
 document.addEventListener('DOMContentLoaded', getAllEntries);
 
+
+// retrive all the entries from the MYSQL DB
 function getAllEntries(){
+    // get api 
     fetch(`${BASE_URL}/entries`)
     .then(response => response.json())
     .then(data => {
@@ -21,7 +24,7 @@ function getAllEntries(){
 
 
 
-
+// submit handler
 sleepForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
