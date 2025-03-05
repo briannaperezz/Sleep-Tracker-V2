@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sleep Tracker V2 using MYSQL</h1>
+
+        <form id="sleepForm">
+            <label for="date">Date:</label>
+            <input type="date" id="date" required />
+
+            <label for="hours">Hours Slept:</label>
+            <input type="number" id="hours" min="0" max="24" required />
+
+            <button type="submit">Add Entry</button>
+        </form>
+
+   
+       
+    </div>
+    <div class="twoColumnContainer">
+        <div class="tableContainer">
+            <h2>Sleep Logs</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Date</th>
+                        <th>Hours</th>
+                        <th>Delete</th>
+                       
+                    </tr>
+                </thead>
+                <tbody id="sleepLog"></tbody>
+            </table>
+        </div>
+
+        <div class="sleepTrends">
+            <h2>Sleep Trends</h2>
+            <table>
+                <tr>
+                    <th>trend 1</th>
+                    <th>trend 2</th>
+                    <th>trend 3</th>
+                    <th>trend 4</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+   
+    <script src="app.js"></script>
+</body>
+</html>

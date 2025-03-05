@@ -17,7 +17,7 @@ const app = express(); // this is our bridge
 
 // In backend development, "middleware" refers to a layer of software that sits 
 // between the client request and the backend application, acting as an intermediary 
-// to process and modify data before it reaches the main application logic, allowing 
+// to process and modify  before it reaches the main application logic, allowing 
 // for functionalities like authentication, logging, data validation, and error handling
 //  to be implemented in a centralized manner across different parts of the backend system.
 
@@ -51,8 +51,9 @@ const db = mysql.createPool({
 
  
 
-
+// establish port as 3000
  const PORT = 3000;
+ // starts the web server
  app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
  })

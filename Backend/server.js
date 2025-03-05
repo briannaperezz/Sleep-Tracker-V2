@@ -13,13 +13,7 @@ const mysql = require('mysql2')
 const app = express(); // this is our bridge
 
 
-/// Middleware (its a software layer that connects applications databases and OS)
-
-// In backend development, "middleware" refers to a layer of software that sits 
-// between the client request and the backend application, acting as an intermediary 
-// to process and modify data before it reaches the main application logic, allowing 
-// for functionalities like authentication, logging, data validation, and error handling
-//  to be implemented in a centralized manner across different parts of the backend system.
+/// Middleware (its a software layer that connects applications databases and OS). its the whataspp
 
 app.use(express.json());
 app.use(cors())
@@ -48,8 +42,42 @@ const db = mysql.createPool({
  })
 
 
+//  Routes / API EndPoints
 
- 
+
+
+app.get("/entries", (req, res) => {
+    const query = 'SELECT * FROM sleep_entries';
+
+    db.query(query, (err, results) => {
+        if(err){
+            console.error("Error fetching the data: ", err);
+            return res.status(500).send('Server Error');
+        }
+        res.json(results);
+    });
+});
+
+
+app.post("/entries", (req, res) => {
+    const {date, hours} = req.body;
+
+    if(!date || !hours){
+        return res.status(400).send("Missing date or hours.");
+    }
+
+    const query = 'INSERT INTO sleep_entries (date, hours) VALUES (?, ?)';
+
+    db.query(query, [date, hours], (err, result) => {
+        if(err){
+            console.error("Error inserting data:", err);
+            return res.status(500).send("Server error.");
+        }
+
+        res.json({id: result.insertId, date, hours})
+    })
+})
+
 
 
  const PORT = 3000;
