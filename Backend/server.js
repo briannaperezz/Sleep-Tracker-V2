@@ -79,6 +79,9 @@ app.post("/entries", (req, res) => {
 })
 
 
+// // Delete an entry backend setup
+
+
 
  const PORT = 3000;
  app.listen(PORT, () => {
