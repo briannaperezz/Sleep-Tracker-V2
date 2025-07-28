@@ -9,6 +9,8 @@ const sleepLogTableBody = document.getElementById('sleepLog')
 const BASE_URL = 'https://sleep-tracker-v2.onrender.com'; // address for our server from the backend
 
 
+// test
+
 
 document.addEventListener('DOMContentLoaded', getAllEntries);
 //DOMContentLoaded means everytime page is refreshed/accessed
