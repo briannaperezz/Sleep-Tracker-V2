@@ -47,7 +47,7 @@ const db = mysql.createPool({
 
 
 app.get("/entries", (req, res) => {
-    const query = 'SELECT * FROM sleep_entries';
+    const query = 'SELECT * FROM sleep_entries ORDER BY DATE ASC';
 
     db.query(query, (err, results) => {
         if(err){
@@ -81,6 +81,33 @@ app.post("/entries", (req, res) => {
 
 // // Delete an entry backend setup
 
+app.delete('/entries/:id', (req, res) => {
+    console.log(req, "delete!!!!");
+    const {id} = req.params;
+    const query = 'DELETE FROM sleep_entries WHERE id = ?';
+    db.query(query, [id], (err, result) => {
+        if(err){
+            console.error("Error deleting data:", err);
+            return res.status(500).send("Server Error.");
+        }
+        if(result.affectedRows === 0){
+            return res.status(404).send("Entry not found");
+        }
+        res.json({message: "Entry with ID ${id} deleted succesfully"})
+    })
+})
+
+// Edit entry backend setup
+
+app.put('/entries/:id', (req,res)=> {
+    const {id} = req.params;
+    const {DATE, hours} = req.body
+    const sql = "UPDATE sleep_entries SET DATE = ?, hours = ? WHERE id = ?"
+    db.query(sql, [DATE, hours, id], (err,result) => {
+        if(err) return res.status(500).json({error: err.message})
+        res.json({message: "Entry updated successfully", result})
+    })
+})
 
 
  const PORT = 3000;
