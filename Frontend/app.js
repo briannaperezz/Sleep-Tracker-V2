@@ -5,8 +5,8 @@ const sleepForm = document.getElementById("sleepForm")
 
 const sleepLogTableBody = document.getElementById('sleepLog')
 
-const BASE_URL = 'http://localhost:3000'; // address for our server from the backend
-// const BASE_URL = 'https://sleep-tracker-v2-backend.onrender.com/'; // address for our server from the backend
+// const BASE_URL = 'http://localhost:3000'; // address for our server from the backend
+const BASE_URL = 'https://sleep-tracker-v2.onrender.com'; // address for our server from the backend
 
 
 
